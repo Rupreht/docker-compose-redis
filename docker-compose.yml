@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    volumes:
+      - redis:/data
+    environment:
+      TZ: ${TZ}
+    networks:
+      - backend
+    logging:
+      driver: ${REDIS_LOG_DRIVER:-json-file}
+      options:
+        max-size: ${REDIS_LOG_MAX_SIZE:-2m}
+        max-file: ${REDIS_LOG_MAX_FILE:-4}
+
+networks:
+  backend:
+    external:
+      name: ${NET_BACKEND:-backend}
+
+volumes:
+  redis: {}
