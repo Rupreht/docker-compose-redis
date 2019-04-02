@@ -1,6 +1,6 @@
 # docker-compose-redis
 
-## Redis
+## Redis alpine
 
 ## Deploy
 
